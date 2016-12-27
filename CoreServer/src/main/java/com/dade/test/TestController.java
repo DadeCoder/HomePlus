@@ -1,7 +1,11 @@
 package com.dade.test;
 
 import com.dade.commons.utils.LogUtil;
+import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,6 +33,13 @@ public class TestController {
         TestUser dbUser = dao.insert(user);
         LogUtil.info("dbUser: " + dbUser);
         return dbUser;
+    }
+
+    @RequestMapping(value = "/head", method = RequestMethod.POST)
+    void head(HttpServletRequest request){
+
+        LogUtil.info(request.toString());
+
     }
 
 }
