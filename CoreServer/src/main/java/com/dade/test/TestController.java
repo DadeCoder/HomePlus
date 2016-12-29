@@ -119,7 +119,7 @@ public class TestController {
         Map<String, Object> res = new HashMap<>();
         res.put("state", 200);
         res.put("message","message");
-        res.put("result", "img\\picture.jpg");
+        res.put("result", "F:\\Liemeng\\featured-SpringIO.png");
 
         LogUtil.info("name: " + file.getOriginalFilename());
         String ext = FilenameUtils.getExtension(file.getOriginalFilename());
