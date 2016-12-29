@@ -104,4 +104,31 @@ public class TestController {
         return json ;
 
     }
+
+
+//    @RequestMapping(value = "/bootstrap", method = RequestMethod.POST, produces = {"text/html;charset=UTF-8"})
+    @RequestMapping(value = "/bootstrap", method = RequestMethod.POST)
+    Map bootstrap(@RequestParam("avatar_src") String src,
+                             @RequestParam("avatar_data") String data,
+                             @RequestParam("avatar_file") MultipartFile file){
+
+        LogUtil.info("test");
+        //LogUtil.info(src);
+        LogUtil.info(data);
+
+        Map<String, Object> res = new HashMap<>();
+        res.put("state", 200);
+        res.put("message","message");
+        res.put("result", "img\\picture.jpg");
+
+        LogUtil.info("name: " + file.getOriginalFilename());
+        String ext = FilenameUtils.getExtension(file.getOriginalFilename());
+        LogUtil.info("ext: " + ext);
+
+        return res;
+//        return new ResponseEntity(res, HttpStatus.OK);
+//        return new ResponseEntity(HttpStatus.OK);
+
+    }
+
 }
