@@ -196,7 +196,7 @@ public class TestController {
                     put("state", 403);
                 }
             };
-        System.out.println("file type: "+type);
+        LogUtil.info("file type: "+type);
 
 
         JSONObject joData = new JSONObject(data);
