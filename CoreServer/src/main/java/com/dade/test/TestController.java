@@ -119,7 +119,7 @@ public class TestController {
         Map<String, Object> res = new HashMap<>();
         res.put("state", 200);
         res.put("message","message");
-        res.put("result", "F:\\Liemeng\\featured-SpringIO.png");
+        res.put("result", ".\\img\\featured-SpringIO.png");
 
         LogUtil.info("name: " + file.getOriginalFilename());
         String ext = FilenameUtils.getExtension(file.getOriginalFilename());
@@ -128,6 +128,56 @@ public class TestController {
         return res;
 //        return new ResponseEntity(res, HttpStatus.OK);
 //        return new ResponseEntity(HttpStatus.OK);
+
+    }
+
+    @RequestMapping(value = "/upload", method = RequestMethod.POST)
+    Map upload(@RequestParam("avatar_src") String src,
+                  @RequestParam("avatar_data") String data,
+                  @RequestParam("avatar_file") MultipartFile file){
+
+        LogUtil.info(data);
+
+        LogUtil.info("name: " + file.getOriginalFilename());
+        String ext = FilenameUtils.getExtension(file.getOriginalFilename());
+        LogUtil.info("ext: " + ext);
+
+        String resurl = "";
+
+        try {
+            //输出文件后缀名称
+//            LogUtil.info(file.getOriginalFilename());
+            DateFormat df = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+            //图片名称
+            String name = df.format(new Date());
+
+            Random r = new Random();
+            for(int i = 0 ;i<3 ;i++){
+                name += r.nextInt(10);
+            }
+            //保存图片       File位置 （全路径）   /upload/fileName.jpg
+//            String url = "E:/software/Idea/HomePlus/CoreServer/src/main/resources/static/upload";
+            String url = "E:/foreground/homeplus/angular-seed/app/upload/";
+            //相对路径
+            String path = name + "." + ext;
+            File pic = new File(url);
+            if(!pic.exists()){
+                pic.mkdirs();
+            }
+//            resurl = url + path;
+            resurl = ".\\upload\\" + path;
+            LogUtil.info(url + path);
+            file.transferTo(new File(url+path));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        Map<String, Object> res = new HashMap<>();
+        res.put("state", 200);
+        res.put("message","message");
+        res.put("result", resurl);
+
+        return res;
 
     }
 
