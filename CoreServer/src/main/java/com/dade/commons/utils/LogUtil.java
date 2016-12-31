@@ -40,8 +40,8 @@ public class LogUtil {
     private static String getClassName(StackTraceElement ste) {
         String className = ste.getClassName();
         List<String> classNames = Arrays.asList(className.split("\\."));
-        if (className.contains("com.hunterplus.server")) {
-            classNames = classNames.subList(3, classNames.size());
+        if (className.contains("com.dade")) {
+            classNames = classNames.subList(2, classNames.size());
         }
         return classNames.stream()
                 .collect(Collectors.joining("."));
