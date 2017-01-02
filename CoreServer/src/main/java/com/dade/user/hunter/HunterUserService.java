@@ -20,6 +20,14 @@ import java.util.Random;
 @Component
 public class HunterUserService {
 
+    /**
+     * user change their headimage
+     * TODO how to bind user id
+     * @param src
+     * @param data
+     * @param file
+     * @return
+     */
     public String imageHead(String src, String data, MultipartFile file){
 
         JSONObject joData = new JSONObject(data);
