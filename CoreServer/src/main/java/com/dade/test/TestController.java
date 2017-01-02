@@ -1,9 +1,9 @@
 package com.dade.test;
 
+import com.dade.commons.utils.ImageUtil;
 import com.dade.commons.utils.LogUtil;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.apache.commons.io.FilenameUtils;
-import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -183,87 +183,87 @@ public class TestController {
 
     }
 
-    @RequestMapping(value = "/cut", method = RequestMethod.POST)
-    Map cut(@RequestParam("avatar_src") String src,
-               @RequestParam("avatar_data") String data,
-               @RequestParam("avatar_file") MultipartFile file){
-
-        //判断文件的MIMEtype
-        String type = file.getContentType();
-        if(type==null || !type.toLowerCase().startsWith("image/"))
-            return  new HashMap<String, Object>(){
-                {
-                    put("state", 403);
-                }
-            };
-        LogUtil.info("file type: "+type);
-
-
-        JSONObject joData = new JSONObject(data);
-        // 用户经过剪辑后的图片的大小
-        double x = joData.getDouble("x");
-        double y = joData.getDouble("y");
-        double w =  joData.getDouble("width");
-        double h =  joData.getDouble("height");
-
-        LogUtil.info("x: " + x);
-        LogUtil.info("y: " + y);
-        LogUtil.info("w: " + w);
-        LogUtil.info("h: " + h);
-
-        LogUtil.info(data);
-
-        LogUtil.info("name: " + file.getOriginalFilename());
-        String ext = FilenameUtils.getExtension(file.getOriginalFilename());
-        LogUtil.info("ext: " + ext);
-
-        String resurl = "";
-
-        try {
-            //输出文件后缀名称
-//            LogUtil.info(file.getOriginalFilename());
-            DateFormat df = new SimpleDateFormat("yyyyMMddHHmmssSSS");
-            //图片名称
-            String name = df.format(new Date());
-
-            Random r = new Random();
-            for(int i = 0 ;i<3 ;i++){
-                name += r.nextInt(10);
-            }
-            //保存图片       File位置 （全路径）   /upload/fileName.jpg
-//            String url = "E:/software/Idea/HomePlus/CoreServer/src/main/resources/static/upload";
-            String url = "E:/foreground/homeplus/angular-seed/app/upload/";
-            //相对路径
-            String path = name + "." + ext;
-            File pic = new File(url, path);
-            if(!pic.exists()){
-                pic.mkdirs();
-
-                InputStream is = file.getInputStream();
-                ImageCut.cut(is, pic, (int)x,(int)y,(int)w,(int)h);
-
-                //FileUtil.copyFile(url+path,url+path + "s");
-
-                is.close();
-
-            }
-//            resurl = url + path;
-            resurl = ".\\upload\\" + path;
-            LogUtil.info(url + path);
-//            file.transferTo(new File(url+path));
-//            file.transferTo(new File(url+path));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        Map<String, Object> res = new HashMap<>();
-        res.put("state", 200);
-        res.put("message","message");
-        res.put("result", resurl);
-
-        return res;
-
-    }
+//    @RequestMapping(value = "/cut", method = RequestMethod.POST)
+//    Map cut(@RequestParam("avatar_src") String src,
+//               @RequestParam("avatar_data") String data,
+//               @RequestParam("avatar_file") MultipartFile file){
+//
+//        //判断文件的MIMEtype
+//        String type = file.getContentType();
+//        if(type==null || !type.toLowerCase().startsWith("image/"))
+//            return  new HashMap<String, Object>(){
+//                {
+//                    put("state", 403);
+//                }
+//            };
+//        LogUtil.info("file type: "+type);
+//
+//
+//        JSONObject joData = new JSONObject(data);
+//        // 用户经过剪辑后的图片的大小
+//        double x = joData.getDouble("x");
+//        double y = joData.getDouble("y");
+//        double w =  joData.getDouble("width");
+//        double h =  joData.getDouble("height");
+//
+//        LogUtil.info("x: " + x);
+//        LogUtil.info("y: " + y);
+//        LogUtil.info("w: " + w);
+//        LogUtil.info("h: " + h);
+//
+//        LogUtil.info(data);
+//
+//        LogUtil.info("name: " + file.getOriginalFilename());
+//        String ext = FilenameUtils.getExtension(file.getOriginalFilename());
+//        LogUtil.info("ext: " + ext);
+//
+//        String resurl = "";
+//
+//        try {
+//            //输出文件后缀名称
+////            LogUtil.info(file.getOriginalFilename());
+//            DateFormat df = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+//            //图片名称
+//            String name = df.format(new Date());
+//
+//            Random r = new Random();
+//            for(int i = 0 ;i<3 ;i++){
+//                name += r.nextInt(10);
+//            }
+//            //保存图片       File位置 （全路径）   /upload/fileName.jpg
+////            String url = "E:/software/Idea/HomePlus/CoreServer/src/main/resources/static/upload";
+//            String url = "E:/foreground/homeplus/angular-seed/app/upload/";
+//            //相对路径
+//            String path = name + "." + ext;
+//            File pic = new File(url, path);
+//            if(!pic.exists()){
+//                pic.mkdirs();
+//
+//                InputStream is = file.getInputStream();
+//                ImageUtil.cut(is, pic, (int)x,(int)y,(int)w,(int)h);
+//
+//                //FileUtil.copyFile(url+path,url+path + "s");
+//
+//                is.close();
+//
+//            }
+////            resurl = url + path;
+//            resurl = ".\\upload\\" + path;
+//            LogUtil.info(url + path);
+////            file.transferTo(new File(url+path));
+////            file.transferTo(new File(url+path));
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//        Map<String, Object> res = new HashMap<>();
+//        res.put("state", 200);
+//        res.put("message","message");
+//        res.put("result", resurl);
+//
+//        return res;
+//
+//    }
 
 
 }

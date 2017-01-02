@@ -1,4 +1,4 @@
-package com.dade.test;
+package com.dade.commons.utils;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -13,7 +13,7 @@ import java.io.InputStream;
  * http://blog.csdn.net/houxuehan/article/details/52025404
  * Created by Dade on 2016/12/31.
  */
-public class ImageCut {
+public class ImageUtil {
 
     /**
      * 图像切割（改）     *

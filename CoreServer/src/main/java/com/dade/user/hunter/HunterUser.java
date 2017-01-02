@@ -19,6 +19,8 @@ public class HunterUser extends BasicModelObject{
     private String nickName;                            // 昵称
     private String password;                            // 密码
 
+    // 个人中心
+    private String imageHeaderUrl;
 
 
 
