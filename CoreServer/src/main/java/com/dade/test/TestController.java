@@ -265,5 +265,17 @@ public class TestController {
 //
 //    }
 
+    @RequestMapping(value = "userid", method = RequestMethod.POST)
+    String userId(@RequestBody UserInfo userInfo){
+        LogUtil.info(userInfo.toString());
+        return "userid";
+    }
+
+    @RequestMapping(value = "cookie/{userid}")
+    String cookie(@PathVariable String userid){
+        LogUtil.info(userid);
+        return "cookie!";
+    }
+
 
 }
