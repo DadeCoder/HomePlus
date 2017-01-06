@@ -39,4 +39,9 @@ package com.dade;
  * test
  *      测试包
  *
+ *
+ * /api/public
+ *
+ * /api/private
+ *
  */

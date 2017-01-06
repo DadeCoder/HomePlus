@@ -1,7 +1,10 @@
-package com.dade.test;
+package com.dade.user.login;
 
 import com.dade.commons.utils.LogUtil;
+import org.springframework.boot.web.servlet.ServletComponentScan;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -11,9 +14,8 @@ import java.io.IOException;
 /**
  * Created by Dade on 2017/1/6.
  */
-@Configuration
-@WebFilter
-public class HttpAuthFilter implements Filter {
+@Component
+public class HttpAuthFilter implements Filter{
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
 

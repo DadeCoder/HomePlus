@@ -24,7 +24,7 @@ import java.util.*;
  * Created by Dade on 2016/12/24.
  */
 @RestController
-@RequestMapping("/api/test")
+@RequestMapping("/api/public/test")
 public class TestController {
 
     @Autowired
