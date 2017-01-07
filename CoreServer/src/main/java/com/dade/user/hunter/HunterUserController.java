@@ -5,10 +5,7 @@ import com.dade.commons.utils.LogUtil;
 import org.apache.commons.io.FilenameUtils;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -61,6 +58,15 @@ public class HunterUserController {
                 }
         };
 
+    }
+
+    @RequestMapping("/{phoneNumber}")
+    HunterUser findHunterUser(@PathVariable String phoneNumber){
+
+        HunterUser hunterUser = hunterUserService.findHunterUser(phoneNumber);
+        LogUtil.info(hunterUser.toString());
+
+        return hunterUser;
     }
 
 }
