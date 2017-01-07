@@ -278,6 +278,7 @@ public class TestController {
     }
 
     @RequestMapping(value = "/header")
+    @Deprecated
     String header(@RequestHeader("Authorization") String Authorization){
         LogUtil.info(Authorization);
         return Authorization;
