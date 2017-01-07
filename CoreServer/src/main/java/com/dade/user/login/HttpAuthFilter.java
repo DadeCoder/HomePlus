@@ -23,6 +23,7 @@ public class HttpAuthFilter implements Filter{
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+        LogUtil.info("filter");
         HttpServletRequest httpRequest = (HttpServletRequest)servletRequest;
         String auth = httpRequest.getHeader("Authorization");
         if (auth!=null)
