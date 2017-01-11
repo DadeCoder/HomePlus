@@ -9,3 +9,4 @@ logs/*
 tmp_cv/*
 *.log
 */target/
+MessageServer/*

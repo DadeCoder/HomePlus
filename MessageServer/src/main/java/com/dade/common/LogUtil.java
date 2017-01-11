@@ -20,16 +20,46 @@ public class LogUtil {
         logger.info(getTemplate(ste, className, mes));
     }
 
+    public static void info(String mes, Object object){
+        StackTraceElement ste = getCurrentElement();
+        String className = getClassName(ste);
+        logger.info(getTemplate(ste, className, mes));
+    }
+
     public static void warn(String mes){
         StackTraceElement ste = getCurrentElement();
         String className = getClassName(ste);
         logger.warn(getTemplate(ste, className, mes));
     }
 
+    public static void warn(String mes, Object object){
+        StackTraceElement ste = getCurrentElement();
+        String className = getClassName(ste);
+        logger.info(getTemplate(ste, className, mes));
+    }
+
     public static void error(String mes){
         StackTraceElement ste = getCurrentElement();
         String className = getClassName(ste);
         logger.error(getTemplate(ste, className, mes));
+    }
+
+    public static void error(String mes, Object object){
+        StackTraceElement ste = getCurrentElement();
+        String className = getClassName(ste);
+        logger.info(getTemplate(ste, className, mes));
+    }
+
+    public static void debug(String mes){
+        StackTraceElement ste = getCurrentElement();
+        String className = getClassName(ste);
+        logger.debug(getTemplate(ste, className, mes));
+    }
+
+    public static void debug(String mes, Object object){
+        StackTraceElement ste = getCurrentElement();
+        String className = getClassName(ste);
+        logger.info(getTemplate(ste, className, mes));
     }
 
 

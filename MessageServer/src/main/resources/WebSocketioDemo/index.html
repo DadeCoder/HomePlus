@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Socket.io</title>
+    <link href="lib/bootstrap.css" rel="stylesheet">
+    <style>
+        body {
+            padding:20px;
+        }
+        #console {
+            height: 100px;
+            overflow: auto;
+        }
+        .username-msg {color:orange;}
+        .connect-msg {color:green;}
+        .disconnect-msg {color:red;}
+
+
+        .left{ width:49.5%; float:left;}
+        .left + .left{ margin-left: 1%;}
+
+        .chat_info{ width:42%; float:left;}
+        .chat{ width:57%; float:left;}
+        .chat_info + .chat{ margin-left: 1%;}
+
+        #notice_console,#chat_friend_console
+        {
+            height: 150px;
+            overflow: auto;
+        }
+        #chat_info_console
+        {
+            height: 265px;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>socket.io Demo</h1>
+    <br/>
+    <div class="clearfix">
+        <div class="left">
+            <h3>登录登出</h3>
+            <form class="well form-inline" onsubmit="return false;">
+                <button type="button" onClick="sendConnect()" class="btn" id="connect">启动连接</button>
+                <button type="button" onClick="sendDisconnect()" class="btn" id="disconnect">关闭连接</button>
+                <br/>
+                <br/>
+                <input id="user" class="input-xlarge" type="text" placeholder="自己名称用户名..."/> :
+                <button type="button" onClick="login()" class="btn" id="io_login">登录</button>
+                <button type="button" onClick="loginout()" class="btn" id="io_loginout">登出</button>
+                <br/>
+                <br/>
+                <button type="button" onClick="chatGetUserList()" class="btn" id="chat_get_user_list">获得聊天用户列表</button>
+                <button type="button" onClick="chatGetUserMessageList()" class="btn" id="chat_get_user_message_list">获得用户聊天信息</button>
+                <input id="chat_user_id" class="input-large" type="text" placeholder="好友ID..."/>
+
+            </form>
+        </div>
+
+        <div class="left">
+            <h3>消息提醒</h3>
+            <div id="notice_console" class="well">
+            </div>
+        </div>
+    </div>
+
+    <div class="clearfix">
+        <div class="chat_info">
+            <h3>聊天相关信息</h3>
+            <div id="chat_info_console" class="well">
+            </div>
+        </div>
+
+        <div class="chat">
+            <h3>好友聊天频道</h3>
+            <div id="chat_friend_console" class="well">
+            </div>
+
+            <form class="well form-inline" onsubmit="return false;">
+                <input id="chat_friend_img" type="file"/>
+                <br/>
+                <input id="chat_send_user_id" class="input-large" type="text" placeholder="好友ID..."/> :
+                <input id="chat_send_user_msg" class="input-xlarge" type="text" placeholder="Type something..."/>
+                <button type="button" onClick="chatSendMessage()" class="btn" id="chat_friend_send">Send</button>
+            </form>
+        </div>
+    </div>
+
+    <!--script src="lib/socket.io/socket.io.js"></script-->
+    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+    <script src="lib/moment.min.js"></script>
+    <script src="lib/jquery-1.7.2.min.js"></script>
+
+    <script src="index.js"></script>
+
+</body>
+</html>
