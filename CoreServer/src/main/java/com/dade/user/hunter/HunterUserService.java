@@ -54,7 +54,9 @@ public class HunterUserService {
 
             // 文件后缀名称
             String ext = FilenameUtils.getExtension(file.getOriginalFilename());
-            String url = "E:/foreground/homeplus/angular-seed/app/upload/";
+//            String url = "E:/foreground/homeplus/angular-seed/app/upload/";
+            String url = "E:/ImageServer/resources/";
+//            String url = "http://127.0.0.1/";
 
             String path = name + "." + ext;
             File pic = new File(url, path);
@@ -64,7 +66,11 @@ public class HunterUserService {
                 ImageUtil.cut(is, pic, (int)x, (int)y, (int)w, (int)h);
                 is.close();
             }
-            imageHeadUrl = ".\\upload\\" + path;
+//            imageHeadUrl = ".\\upload\\" + path;
+
+//            imageHeadUrl = path;
+            imageHeadUrl = "http://127.0.0.1:8089/" + path;
+
         } catch (Exception e) {
             e.printStackTrace();
         }
